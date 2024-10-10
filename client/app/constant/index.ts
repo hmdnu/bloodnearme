@@ -1,10 +1,12 @@
 export const HOSPITAL_DATA = [
   {
+    id: "1",
     nama: "RS Jakarta",
     email: "rsjakarta@example.com",
     password: "hospitalpass123",
     alamat: "Jl. Sudirman No.1, Jakarta",
     noTelpon: "02112345678",
+    role: "hospital",
     stokDarah: [
       { golDarah: "A+", stok: 10 },
       { golDarah: "A-", stok: 5 },
@@ -17,11 +19,13 @@ export const HOSPITAL_DATA = [
     ],
   },
   {
+    id: "2",
     nama: "RS Surabaya",
     email: "rssurabaya@example.com",
     password: "hospitalpass456",
     alamat: "Jl. Ahmad Yani No.10, Surabaya",
     noTelpon: "03198765432",
+    role: "hospital",
     stokDarah: [
       { golDarah: "A+", stok: 9 },
       { golDarah: "A-", stok: 4 },
@@ -34,11 +38,13 @@ export const HOSPITAL_DATA = [
     ],
   },
   {
+    id: "3",
     nama: "RS Bandung",
     email: "rsbandung@example.com",
     password: "hospitalpass789",
     alamat: "Jl. Asia Afrika No.20, Bandung",
     noTelpon: "02212345678",
+    role: "hospital",
     stokDarah: [
       { golDarah: "A+", stok: 11 },
       { golDarah: "A-", stok: 6 },
@@ -51,11 +57,13 @@ export const HOSPITAL_DATA = [
     ],
   },
   {
+    id: "4",
     nama: "RS Medan",
     email: "rsmedan@example.com",
     password: "hospitalpass234",
     alamat: "Jl. Gatot Subroto No.3, Medan",
     noTelpon: "06123456789",
+    role: "hospital",
     stokDarah: [
       { golDarah: "A+", stok: 8 },
       { golDarah: "A-", stok: 4 },
@@ -68,11 +76,13 @@ export const HOSPITAL_DATA = [
     ],
   },
   {
+    id: "5",
     nama: "RS Makassar",
     email: "rsmakassar@example.com",
     password: "hospitalpass567",
     alamat: "Jl. Sultan Alauddin No.5, Makassar",
     noTelpon: "04112345678",
+    role: "hospital",
     stokDarah: [
       { golDarah: "A+", stok: 7 },
       { golDarah: "A-", stok: 5 },
@@ -85,11 +95,13 @@ export const HOSPITAL_DATA = [
     ],
   },
   {
+    id: "6",
     nama: "RS Malang",
     email: "rsmalang@example.com",
     password: "hospitalpass890",
     alamat: "Jl. Ijen No.12, Malang",
     noTelpon: "03412345678",
+    role: "hospital",
     stokDarah: [
       { golDarah: "A+", stok: 10 },
       { golDarah: "A-", stok: 5 },
@@ -102,11 +114,13 @@ export const HOSPITAL_DATA = [
     ],
   },
   {
+    id: "7",
     nama: "RS Bali",
     email: "rsbali@example.com",
     password: "hospitalpass012",
     alamat: "Jl. Denpasar No.8, Bali",
     noTelpon: "036112345678",
+    role: "hospital",
     stokDarah: [
       { golDarah: "A+", stok: 11 },
       { golDarah: "A-", stok: 6 },
@@ -119,11 +133,13 @@ export const HOSPITAL_DATA = [
     ],
   },
   {
+    id: "8",
     nama: "RS Semarang",
     email: "rssemarang@example.com",
     password: "hospitalpass345",
     alamat: "Jl. Pemuda No.10, Semarang",
     noTelpon: "02412345678",
+    role: "hospital",
     stokDarah: [
       { golDarah: "A+", stok: 9 },
       { golDarah: "A-", stok: 3 },
@@ -136,11 +152,13 @@ export const HOSPITAL_DATA = [
     ],
   },
   {
+    id: "9",
     nama: "RS Palembang",
     email: "rspalembang@example.com",
     password: "hospitalpass678",
     alamat: "Jl. Merdeka No.7, Palembang",
     noTelpon: "07112345678",
+    role: "hospital",
     stokDarah: [
       { golDarah: "A+", stok: 8 },
       { golDarah: "A-", stok: 4 },
@@ -153,11 +171,13 @@ export const HOSPITAL_DATA = [
     ],
   },
   {
+    id: "10",
     nama: "RS Yogyakarta",
     email: "rsyogyakarta@example.com",
     password: "hospitalpass901",
     alamat: "Jl. Malioboro No.6, Yogyakarta",
     noTelpon: "027412345678",
+    role: "hospital",
     stokDarah: [
       { golDarah: "A+", stok: 10 },
       { golDarah: "A-", stok: 5 },
@@ -170,11 +190,13 @@ export const HOSPITAL_DATA = [
     ],
   },
   {
-    nama: "Rumah Sakit Waluyo jati",
+    id: "11",
+    nama: "Rumah Sakit Waluyo Jati",
     email: "rswaluyo@example.com",
     password: "hospitalpass901",
     alamat: "Jl. Melon No.6, Karaksan",
     noTelpon: "027412345678",
+    role: "hospital",
     stokDarah: [
       { golDarah: "A+", stok: 10 },
       { golDarah: "A-", stok: 5 },
@@ -185,6 +207,97 @@ export const HOSPITAL_DATA = [
       { golDarah: "AB+", stok: 7 },
       { golDarah: "AB-", stok: 2 },
     ],
+  },
+];
+
+export const PATIENT_DATA = [
+  {
+    email: "john.doe@example.com",
+    name: "John Doe",
+    username: "johndoe123",
+    password: "password123",
+    phone: "123-456-7890",
+  },
+  {
+    email: "jane.smith@example.com",
+    name: "Jane Smith",
+    username: "janesmith456",
+    password: "password456",
+    phone: "234-567-8901",
+  },
+  {
+    email: "michael.jordan@example.com",
+    name: "Michael Jordan",
+    username: "mjordan23",
+    password: "password789",
+    phone: "345-678-9012",
+  },
+  {
+    email: "sarah.connor@example.com",
+    name: "Sarah Connor",
+    username: "sconnor999",
+    password: "terminator123",
+    phone: "456-789-0123",
+  },
+  {
+    email: "bruce.wayne@example.com",
+    name: "Bruce Wayne",
+    username: "batman001",
+    password: "gotham456",
+    phone: "567-890-1234",
+  },
+];
+
+export const ORGANIZER_DATA = [
+  {
+    id: "1",
+    name: "John Doe",
+    role: "organizer",
+    username: "johndoe",
+    email: "johndoe@example.com",
+    password: "password123",
+    phone: "081234567890",
+    postId: "101",
+  },
+  {
+    id: "2",
+    name: "Jane Smith",
+    role: "organizer",
+    username: "janesmith",
+    email: "janesmith@example.com",
+    password: "password456",
+    phone: "082345678901",
+    postId: "102",
+  },
+  {
+    id: "3",
+    name: "Emily Johnson",
+    role: "organizer",
+    username: "emilyjohnson",
+    email: "emilyjohnson@example.com",
+    password: "password789",
+    phone: "083456789012",
+    postId: "103",
+  },
+  {
+    id: "4",
+    name: "Michael Brown",
+    role: "organizer",
+    username: "michaelbrown",
+    email: "michaelbrown@example.com",
+    password: "password101",
+    phone: "084567890123",
+    postId: "104",
+  },
+  {
+    id: "5",
+    name: "Sarah Wilson",
+    role: "organizer",
+    username: "sarahwilson",
+    email: "sarahwilson@example.com",
+    password: "password202",
+    phone: "085678901234",
+    postId: "105",
   },
 ];
 
@@ -219,5 +332,53 @@ export const ROLES = [
   {
     role: "Penyelenggara",
     href: "/register/organizer",
+  },
+];
+
+export const POST_DATA = [
+  {
+    id: "101",
+    description: "Annual Community Gathering to foster connections and celebrate achievements.",
+    time: "10:00 AM",
+    location: "Community Center, Main Hall",
+    date: "2024-10-20",
+    organizerName: "John Doe",
+    eventName: "Community Gathering",
+  },
+  {
+    id: "102",
+    description: "Monthly Volunteer Meeting to plan upcoming activities and initiatives.",
+    time: "2:00 PM",
+    location: "Local Library, Room 3",
+    date: "2024-10-15",
+    organizerName: "Jane Smith",
+    eventName: "Volunteer Meeting",
+  },
+  {
+    id: "103",
+    description: "Workshop on effective marketing strategies for non-profits.",
+    time: "1:00 PM",
+    location: "City Hall, Conference Room A",
+    date: "2024-10-25",
+    organizerName: "Emily Johnson",
+    eventName: "Marketing Workshop",
+  },
+  {
+    id: "104",
+    description: "Logistics planning session for the upcoming charity event.",
+    time: "11:00 AM",
+    location: "Main Office, Meeting Room 2",
+    date: "2024-10-18",
+    organizerName: "Michael Brown",
+    eventName: "Charity Event Planning",
+  },
+  {
+    id: "105",
+    description: "Sponsorship meeting to secure funding for community projects.",
+    time: "3:00 PM",
+    location: "Café Downtown, Private Room",
+    date: "2024-10-22",
+    organizerName: "Sarah Wilson",
+    eventName: "Sponsorship Meeting",
   },
 ];
