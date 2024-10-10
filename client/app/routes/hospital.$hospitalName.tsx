@@ -2,20 +2,7 @@ import { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { Nav } from "~/components";
 import { HOSPITAL_DATA } from "~/constant";
-
-export type TDarah = {
-  golDarah: string;
-  stok: number;
-};
-
-export type THospital = {
-  nama: string;
-  email: string;
-  password: string;
-  alamat: string;
-  noTelpon: string;
-  stokDarah: TDarah[];
-};
+import { THospital } from "~/types";
 
 export const meta: MetaFunction = ({ params }) => {
   return [{ title: params.hospitalName?.replace("-", " ") }];
@@ -23,12 +10,14 @@ export const meta: MetaFunction = ({ params }) => {
 
 export async function loader({ params }: LoaderFunctionArgs) {
   let data: THospital = {
+    id: "",
     nama: "",
     email: "",
     password: "",
     alamat: "",
     noTelpon: "",
     stokDarah: [],
+    role: "",
   };
 
   HOSPITAL_DATA.map((hospital) => {

@@ -7,7 +7,7 @@ import { Checkbox } from "~/components/ui/checkbox";
 import { FormControl, FormField, FormItem, FormLabel } from "~/components/ui/form";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
-import { HOSPITAL_DATA } from "~/constant";
+import { authPatient, authHospital, authOrganizer } from "~/lib/auth";
 
 export const meta: MetaFunction = () => {
   return [{ title: "Login" }];
@@ -16,21 +16,23 @@ export const meta: MetaFunction = () => {
 export async function action({ request }: ActionFunctionArgs) {
   const body = await request.formData();
 
-  const email = body.get("email");
-  const password = body.get("password");
+  const email = String(body.get("email"));
+  const password = String(body.get("password"));
 
-  HOSPITAL_DATA.find((data) => {
-    if (data.email === email && data.password === password) {
-      return redirect("/");
-    } else {
-      return json({ error: "email or password is incorrect" });
-    }
-  });
+  const isPatientValid = authPatient({ email, password });
+  const isHospitalValid = authHospital({ email, password });
+  const isOrganizerValid = authOrganizer({ email, password });
 
-  return null;
+  if (!isPatientValid && !isHospitalValid && !isOrganizerValid) {
+    return json({ message: "auth failed" });
+  }
+
+  return redirect("/");
 }
 
 export default function LoginPage() {
+  const actionData = useActionData<typeof action>();
+
   const form = useForm({
     defaultValues: {
       email: "",
@@ -39,13 +41,11 @@ export default function LoginPage() {
   });
 
   const [viewPassword, setViewPassword] = useState(false);
-  const actionData = useActionData<typeof action>();
 
   return (
     <section className="grid place-content-center h-screen bg-red-900">
       <section className="bg-white p-5 rounded-md">
         <h1 className="heading-3 text-center mb-5">Login</h1>
-
         <FormProvider {...form}>
           <Form method="POST" className="flex flex-col gap-5">
             <FormField
@@ -78,6 +78,9 @@ export default function LoginPage() {
               <Checkbox id="view-password" onClick={() => setViewPassword((e) => !e)} />
               See password
             </Label>
+
+            {/* error message */}
+            <FormLabel className="text-red-500 font-semibold text-sm">{actionData?.message}</FormLabel>
 
             <Button className="bg-red-900 hover:bg-red-950 font-semibold" type="submit">
               Login
