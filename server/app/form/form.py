@@ -33,8 +33,6 @@ class eventOrganizerRegistrationForm(Form):
     ])
     password2 = PasswordField('Confirm Password')
 
-class bloodForm(Form):
-    type = StringField('Type',[validators.Length(min=2, max=3)])
     
 class bloodStockForm(Form):
     stock = IntegerField('Stock', [

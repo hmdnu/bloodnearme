@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_login import LoginManager
 from flask_migrate import Migrate  
-from .models.models import  db,patient,hospital,event_organizer,Blood,BloodStock
+from .models.models import  db,patient,hospital,event_organizer
 
 def create_app():
     app = Flask(__name__)
