@@ -106,6 +106,7 @@ def sign_up_hospital():
                 password_hash=generate_password_hash(password1, method='pbkdf2:sha256')
             )
             
+            
             db.session.add(new_hospital)
             db.session.commit()
             login_user(new_hospital)

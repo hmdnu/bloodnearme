@@ -1,4 +1,4 @@
-from wtforms import Form, StringField, PasswordField, validators
+from wtforms import Form, StringField, PasswordField, validators,IntegerField
 
 class patientRegistrationForm(Form):
     name = StringField('Name', [validators.Length(min=2, max=50)])
@@ -32,3 +32,12 @@ class eventOrganizerRegistrationForm(Form):
         validators.EqualTo('password2', message='Passwords must match.')
     ])
     password2 = PasswordField('Confirm Password')
+
+class bloodForm(Form):
+    type = StringField('Type',[validators.Length(min=2, max=3)])
+    
+class bloodStockForm(Form):
+    stock = IntegerField('Stock', [
+        validators.DataRequired(message='Stock is required.'),
+        validators.NumberRange(min=0, message='Stock must be a positive integer.')
+    ])
