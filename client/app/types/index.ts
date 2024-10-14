@@ -8,20 +8,20 @@ export type TPatient = {
   phone: string;
 };
 
-export type TDarah = {
-  golDarah: string;
-  stok: number;
+export type TBlood = {
+  bloodType: string;
+  stock: number;
 };
 
 export type THospital = {
   id: string;
-  nama: string;
+  name: string;
   role: string;
   email: string;
   password: string;
-  alamat: string;
-  noTelpon: string;
-  stokDarah: TDarah[];
+  address: string;
+  phone: string;
+  bloodStock: TBlood[];
 };
 
 export type TOrganizer = {

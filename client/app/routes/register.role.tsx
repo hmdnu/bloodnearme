@@ -1,4 +1,4 @@
-import { MetaFunction } from "@remix-run/react";
+import { Link, MetaFunction } from "@remix-run/react";
 import { ROLES } from "~/constant";
 
 export const meta: MetaFunction = () => {
@@ -8,8 +8,12 @@ export const meta: MetaFunction = () => {
 export default function RegisterPage() {
   return (
     <section className="grid place-content-center h-screen bg-red-900">
-      <div className="bg-white p-5 rounded-md">
-        <h1 className="text-center heading-3 mb-5">Register sebagai apa?</h1>
+      <div className="bg-white p-5 rounded-md flex flex-col items-center">
+        <Link to={"/"} className="heading-3">
+          Bloodnearme
+        </Link>
+
+        <h1 className="text-center heading-4 mb-5">Register sebagai apa?</h1>
 
         <div className="flex flex-col gap-3 justify-center mb-5">
           {ROLES.map((role) => (

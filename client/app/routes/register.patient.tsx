@@ -1,6 +1,6 @@
 import { Label } from "@radix-ui/react-label";
 import { MetaFunction } from "@remix-run/node";
-import { Form } from "@remix-run/react";
+import { Form, Link } from "@remix-run/react";
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { Button } from "~/components/ui/button";
@@ -18,7 +18,11 @@ export default function RegisterPatientPage() {
 
   return (
     <section className="bg-red-900 grid place-content-center h-screen">
-      <section className="bg-white p-5 rounded-md">
+      <section className="bg-white p-5 rounded-md flex flex-col items-center">
+        <Link to={"/"} className="heading-3">
+          Bloodnearme
+        </Link>
+
         <h1 className="heading-3 text-center mb-5">Register sebagai pasien</h1>
 
         <FormProvider {...form}>

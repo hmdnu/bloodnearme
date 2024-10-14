@@ -62,7 +62,7 @@
 
 @layer components {
   .base {
-    @apply w-[90%] pt-[130px] py-10 mx-auto;
+    @apply w-[90%] pt-[100px] py-10 mx-auto;
   }
 }
 
