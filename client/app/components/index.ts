@@ -6,7 +6,7 @@ import PostCommunity from "./forms/post/PostCommunity";
 import HospitalCard from "./cards/HospitalCard";
 import CommunityCard from "./cards/CommunityCard";
 import Search from "./forms/SearchBar";
-import Filter from "./modals/Filter";
+import Filter from "./forms/modals/Filter";
 import BloodTable from "./BloodTable";
 
 export {

@@ -1,8 +1,6 @@
 export default function CommunityCard() {
   return (
     <div className="bg-slate-200 p-5 rounded-md">
-      {/*  */}
-
       <div className="w-[400px]">
         <div className="flex items-center gap-2">
           <img src="/hospital.jpg" alt="profile" className="w-[50px] h-[50px] rounded-full" />

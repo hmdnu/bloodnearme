@@ -12,7 +12,7 @@ export default function Nav({ cookie }: { cookie?: { userId: string; role: strin
   return (
     <nav className="bg-red-900 text-white py-4 heading-5 fixed w-full z-50">
       <div className="flex justify-between w-[90%] m-auto items-center">
-        <Link to={"/"}>Nama</Link>
+        <Link to={"/"}>Bloodnearme</Link>
 
         {/* dekstop nav link  */}
         <div className="gap-5 sm:flex hidden items-center">

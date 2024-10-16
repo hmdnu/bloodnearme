@@ -18,15 +18,17 @@ export async function loader({ request }: LoaderFunctionArgs) {
   const userId = splited[0]?.split("=")[1];
   const role = splited[1]?.split("=")[1];
 
+  // get location
+
   return json({ userId, role });
 }
 
 export default function Index() {
-  const cookie = useLoaderData<typeof loader>();
+  const res = useLoaderData<typeof loader>();
 
   return (
     <>
-      <Nav cookie={cookie} />
+      <Nav cookie={res} />
       <main className="base">
         <Search />
 
