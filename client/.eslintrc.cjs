@@ -7,6 +7,9 @@
 /** @type {import('eslint').Linter.Config} */
 module.exports = {
   root: true,
+  rules: {
+    "no-unused-vars": "off",
+  },
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
@@ -66,11 +69,11 @@ module.exports = {
           },
         },
       },
-      extends: [
-        "plugin:@typescript-eslint/recommended",
-        "plugin:import/recommended",
-        "plugin:import/typescript",
-      ],
+      extends: ["plugin:@typescript-eslint/recommended", "plugin:import/recommended", "plugin:import/typescript"],
+
+      rules: {
+        "@typescript-eslint/no-unused-vars": "off",
+      },
     },
 
     // Node

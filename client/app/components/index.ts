@@ -8,6 +8,7 @@ import CommunityCard from "./cards/CommunityCard";
 import Search from "./forms/SearchBar";
 import Filter from "./forms/modals/Filter";
 import BloodTable from "./BloodTable";
+import ContactBox from "./ContactBox";
 
 export {
   Nav,
@@ -20,4 +21,5 @@ export {
   Search,
   Filter,
   BloodTable,
+  ContactBox,
 };

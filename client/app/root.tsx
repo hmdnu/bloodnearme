@@ -1,6 +1,20 @@
-import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration, useRouteError } from "@remix-run/react";
-import type { LinksFunction } from "@remix-run/node";
+import {
+  isRouteErrorResponse,
+  Links,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+  useLoaderData,
+  useLocation,
+  useRouteError,
+} from "@remix-run/react";
+import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
 import "./tailwind.css";
+import { ContactBox, Nav } from "./components";
+import { useStoreChatbox } from "./hooks/zustand";
+import { roleAuthorization } from "./lib/createCookie";
+import { serializeCookie } from "./lib/serializeCookie";
 
 export const links: LinksFunction = () => [
   {
@@ -18,7 +32,18 @@ export const links: LinksFunction = () => [
   },
 ];
 
+export async function loader({ request }: LoaderFunctionArgs) {
+  const cookie = await roleAuthorization.parse(request.headers.get("Cookie"));
+
+  const { userId, role } = serializeCookie(cookie);
+
+  return { cookie: { userId, role } };
+}
+
 export function Layout({ children }: { children: React.ReactNode }) {
+  const { cookie } = useLoaderData<typeof loader>();
+  const location = useLocation();
+
   return (
     <html lang="en">
       <head>
@@ -28,7 +53,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+        {!/^\/register\/.*$/.test(location.pathname) && location.pathname !== "/login" && <Nav cookie={cookie} />}
         {children}
+        <ContactBox />
         <ScrollRestoration />
         <Scripts />
       </body>

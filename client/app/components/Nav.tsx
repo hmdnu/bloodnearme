@@ -2,9 +2,11 @@ import { Link } from "@remix-run/react";
 import { useState } from "react";
 import { NAV_LINK } from "~/constant";
 import { useCookies } from "react-cookie";
+import { useStoreChatbox } from "~/hooks/zustand";
 
 export default function Nav({ cookie }: { cookie?: { userId: string; role: string } | null }) {
   const [navMobile, setNavMobile] = useState(false);
+  const { setOpenChatbox } = useStoreChatbox();
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [cookies, setCookie, removeCookie] = useCookies(["userRole"]);
@@ -16,6 +18,7 @@ export default function Nav({ cookie }: { cookie?: { userId: string; role: strin
 
         {/* dekstop nav link  */}
         <div className="gap-5 sm:flex hidden items-center">
+          <button onClick={() => setOpenChatbox()}>chat</button>
           {NAV_LINK.map((nav) => (
             <div key={nav.name}>
               {nav.name === "login/register" && cookie ? (
@@ -41,13 +44,22 @@ export default function Nav({ cookie }: { cookie?: { userId: string; role: strin
         </div>
 
         {/* mobile nav link */}
-        <div className="sm:hidden flex">
+        <div className="sm:hidden flex gap-5">
+          {cookie && (
+            <Link to={`/profile/${cookie?.role}/${cookie?.userId}`} className="cursor-pointer">
+              <img src="/hospital.jpg" alt="profile" className="w-[35px] h-[35px] rounded-full object-cover" />
+            </Link>
+          )}
           <button onClick={() => setNavMobile((e) => !e)} className="font-bold rotate-90">
             |||
           </button>
 
           {navMobile && (
             <div className="fixed text-black bg-slate-200 top-14 right-10 px-5 py-2 rounded-md flex flex-col gap-2">
+              <button className="w-fit" onClick={() => setOpenChatbox()}>
+                chat
+              </button>
+
               {NAV_LINK.map((link) => (
                 <Link to={link.href} key={link.name} className="hover:underline">
                   {link.name}

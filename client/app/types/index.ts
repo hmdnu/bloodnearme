@@ -35,12 +35,12 @@ export type TOrganizer = {
   postId: string;
 };
 
-export type TPost = {
+export type TEventPost = {
   id: string;
-  description: string;
-  time: string;
-  location: string;
-  date: string;
+  creatorId: string;
+  content: string;
+  timeAndDatePost: Date;
   organizerName: string;
-  eventName: string;
+  regency: string;
+  province: string;
 };
