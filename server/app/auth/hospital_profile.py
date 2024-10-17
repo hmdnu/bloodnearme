@@ -1,16 +1,16 @@
 from flask import jsonify
-from ..models.models import hospital,Blood
+from ..models.models import hospital, Blood
 from . import auth
 
 
 @auth.route('/hospital/<string:hospital_name>/', methods=['GET'])
 def hospital_profile(hospital_name):
     hospital_name = hospital_name.replace('-', ' ')
-    
+
     hospitaldb = hospital.query.filter_by(name=hospital_name).first()
-    
+
     if not hospitaldb:
-        return jsonify({"error": "Hospital not found."}), 404  
+        return jsonify({"error": "Hospital not found."}), 404
 
     blood_types = Blood.query.filter_by(hospital_id=hospitaldb.id).all()
 
@@ -29,6 +29,3 @@ def hospital_profile(hospital_name):
         "contact": hospitaldb.phone_number,
         "stock_data": stock_data
     })
-
-
-

@@ -5,3 +5,4 @@ from .login import *
 from .sign_up import *
 from .update_blood import *
 from .hospital_profile import *
+from .eventadd import *
