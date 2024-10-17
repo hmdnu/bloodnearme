@@ -7,14 +7,13 @@ import {
   redirect,
   Scripts,
   ScrollRestoration,
-  useLoaderData,
   useLocation,
   useRouteError,
+  useRouteLoaderData,
 } from "@remix-run/react";
 import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
 import "./tailwind.css";
 import { ContactBox, Nav } from "./components";
-import { useStoreChatbox } from "./hooks/zustand";
 import { roleAuthorization } from "./lib/createCookie";
 import { serializeCookie } from "./lib/serializeCookie";
 import { PRIVATE_ROUTE } from "./constant/common";
@@ -60,7 +59,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
 }
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const data = useLoaderData<typeof loader>();
+  const data = useRouteLoaderData("root");
   const location = useLocation();
 
   const cookie = (data as { cookie: { userId: string; role: string } })?.cookie;
