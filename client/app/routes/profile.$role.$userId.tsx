@@ -83,7 +83,7 @@ export default function ProfilePage() {
           <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5 justify-items-center md:justify-start my-5">
             {cookie.role === "organizer" ||
               (cookie.role === "hospital" &&
-                POST.filter((post) => post.id === res.id && post.organizerName === res.name).map((post) => (
+                POST.filter((post) => post.creatorId === res.id && post.organizerName === res.name).map((post) => (
                   <div key={post.id}>
                     <CommunityCard post={post} />
                   </div>

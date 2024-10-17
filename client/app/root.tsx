@@ -1,8 +1,10 @@
 import {
   isRouteErrorResponse,
+  json,
   Links,
   Meta,
   Outlet,
+  redirect,
   Scripts,
   ScrollRestoration,
   useLoaderData,
@@ -15,6 +17,7 @@ import { ContactBox, Nav } from "./components";
 import { useStoreChatbox } from "./hooks/zustand";
 import { roleAuthorization } from "./lib/createCookie";
 import { serializeCookie } from "./lib/serializeCookie";
+import { PRIVATE_ROUTE } from "./constant/common";
 
 export const links: LinksFunction = () => [
   {
@@ -33,16 +36,34 @@ export const links: LinksFunction = () => [
 ];
 
 export async function loader({ request }: LoaderFunctionArgs) {
-  const cookie = await roleAuthorization.parse(request.headers.get("Cookie"));
+  const rawCookie = request.headers.get("Cookie");
+  const url = new URL(request.url);
 
-  const { userId, role } = serializeCookie(cookie);
+  const isPrivateRoute = PRIVATE_ROUTE.some((route) => route.href.test(url.pathname));
 
-  return { cookie: { userId, role } };
+  if (isPrivateRoute && !rawCookie) {
+    return redirect("/login");
+  }
+
+  if (rawCookie) {
+    const cookie = await roleAuthorization.parse(rawCookie);
+    const { userId, role } = serializeCookie(cookie);
+
+    if (!userId || !role) {
+      return redirect("/login");
+    }
+
+    return json({ cookie: { userId, role } });
+  }
+
+  return json({});
 }
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const { cookie } = useLoaderData<typeof loader>();
+  const data = useLoaderData<{ cookie: { userId: string; role: string } | null }>();
   const location = useLocation();
+
+  const cookie = data?.cookie;
 
   return (
     <html lang="en">

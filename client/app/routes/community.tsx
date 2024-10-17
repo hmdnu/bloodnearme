@@ -22,7 +22,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
   const { userId, role } = serializeCookie(cookie);
 
-  return json({ userId, role, cookie });
+  return json({ userId, role });
 }
 
 export default function Community() {
@@ -32,7 +32,7 @@ export default function Community() {
   return (
     <section className="base grid place-content-center">
       <div className="mb-5">
-        {(cookie?.cookie && cookie.role === "organizer") || cookie?.role === "hospital" ? (
+        {cookie?.role === "organizer" || cookie?.role === "hospital" ? (
           <fetcher.Form action="/" method="POST">
             <Textarea className="bg-slate-200 p-5 rounded-md resize-none" rows={5} placeholder="Buat post" />
 
