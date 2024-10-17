@@ -60,10 +60,10 @@ export async function loader({ request }: LoaderFunctionArgs) {
 }
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const data = useLoaderData<{ cookie: { userId: string; role: string } | null }>();
+  const data = useLoaderData<typeof loader>();
   const location = useLocation();
 
-  const cookie = data?.cookie;
+  const cookie = (data as { cookie: { userId: string; role: string } })?.cookie;
 
   return (
     <html lang="en">
@@ -83,7 +83,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
     </html>
   );
 }
-
 export function ErrorBoundary() {
   const error = useRouteError();
 
