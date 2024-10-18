@@ -19,7 +19,7 @@ export default function RegisterPatientPage() {
   return (
     <section className="bg-red-900 grid place-content-center h-screen">
       <section className="bg-white p-5 rounded-md flex flex-col items-center">
-        <Link to={"/"} className="heading-3">
+        <Link to="/" className="heading-3">
           Bloodnearme
         </Link>
 

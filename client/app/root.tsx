@@ -60,14 +60,14 @@ export async function loader({ request }: LoaderFunctionArgs) {
     return json({ cookie: { userId, role } });
   }
 
-  return json({});
+  return null;
 }
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const data = useRouteLoaderData("root");
+  const data = useRouteLoaderData<typeof loader>("root");
   const location = useLocation();
 
-  const cookie = (data as { cookie: { userId: string; role: string } })?.cookie;
+  const cookie = data?.cookie;
 
   return (
     <html lang="en">

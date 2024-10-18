@@ -1,5 +1,5 @@
 import { ActionFunctionArgs, json, type LoaderFunctionArgs, type MetaFunction } from "@remix-run/node";
-import { Nav, HospitalCard, Search } from "../components/index";
+import { HospitalCard, Search } from "../components/index";
 import { roleAuthorization } from "~/lib/createCookie";
 import { useLoaderData } from "@remix-run/react";
 import { serializeCookie } from "~/lib/serializeCookie";
@@ -29,12 +29,10 @@ export default function Index() {
   const res = useLoaderData<typeof loader>();
 
   return (
-    <>
-      <main className="base">
-        <Search />
+    <main className="base">
+      <Search />
 
-        <HospitalCard userId={res?.userId} />
-      </main>
-    </>
+      <HospitalCard userId={res?.userId} />
+    </main>
   );
 }

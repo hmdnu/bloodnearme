@@ -114,9 +114,9 @@ export default function RegisterHospitalPage() {
 
             <p className="text-center text-sm font-semibold">
               Sudah punya akun?{" "}
-              <a href="/register/role" className="text-neutral-600 hover:underline">
+              <Link to="/register/role" className="text-neutral-600 hover:underline">
                 Register
-              </a>
+              </Link>
             </p>
           </Form>
         </FormProvider>

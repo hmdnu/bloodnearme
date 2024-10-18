@@ -114,9 +114,9 @@ export default function RegisterOrganizerPage() {
 
             <p className="text-center text-sm font-semibold">
               Sudah punya akun?{" "}
-              <a href="/login" className="text-neutral-600 hover:underline">
+              <Link to="/login" className="text-neutral-600 hover:underline">
                 Login
-              </a>
+              </Link>
             </p>
           </Form>
         </FormProvider>

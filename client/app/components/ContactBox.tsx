@@ -2,12 +2,11 @@ import { useState } from "react";
 import { useStoreChatbox } from "~/hooks/zustand";
 
 export default function ContactBox() {
-  const { isOpenChatbox, setOpenChatbox, userId } = useStoreChatbox();
+  const { isOpenChatbox, setOpenChatbox } = useStoreChatbox();
   const [openDm, setOpenDm] = useState(false);
 
   return (
     <div
-      style={{ boxShadow: "0px,0px,5px,5px,rgb(0,0,0,)" }}
       className={`fixed ${
         isOpenChatbox ? "bottom-0" : "-bottom-[500px]"
       }  right-0 bg-slate-200 rounded-t-md sm:h-[400px] h-[300px] sm:w-[400px] w-[200px] transition-all duration-500`}

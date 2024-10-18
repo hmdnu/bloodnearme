@@ -17,17 +17,17 @@ export default function RegisterPage() {
 
         <div className="flex flex-col gap-3 justify-center mb-5">
           {ROLES.map((role) => (
-            <a key={role.role} className="bg-red-900 text-center p-2 rounded-md text-white heading-4" href={role.href}>
+            <Link key={role.role} className="bg-red-900 text-center p-2 rounded-md text-white heading-4" to={role.href}>
               {role.role}
-            </a>
+            </Link>
           ))}
         </div>
 
         <p className="text-center text-sm font-semibold">
           Sudah punya akun?{" "}
-          <a href="/login" className="text-neutral-600 hover:underline ">
+          <Link to="/login" className="text-neutral-600 hover:underline ">
             Login
-          </a>
+          </Link>
         </p>
       </div>
     </section>
