@@ -45,34 +45,28 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
   const isPrivateRoute = PRIVATE_ROUTE.some((route) => route.href.test(url.pathname));
 
-  if (isPrivateRoute) {
+  if (isPrivateRoute && !rawCookie) {
     return redirect("/login");
   }
 
-  if (!rawCookie) {
-    return null;
-  }
+  const cookie = await roleAuthorization.parse(rawCookie);
 
-  try {
-    const cookie = await roleAuthorization.parse(rawCookie);
-    const { userId, role } = serializeCookie(cookie);
+  const role = cookie?.split("; ")[1].split("=")[1].trim();
+  const userId = cookie?.split("; ")[0].split("=")[1].trim();
 
-    if (!userId || !role) {
-      throw new Error("Invalid cookie data");
-    }
-
-    return json({ cookie: { userId, role } });
-  } catch (error) {
-    console.error("Cookie parsing error:", error);
-    return redirect("/login");
-  }
+  return json({ userId, role });
 }
 
+type TLoader = {
+  userId: string;
+  role: string;
+};
+
 export function Layout({ children }: { children: React.ReactNode }) {
-  const data = useRouteLoaderData<typeof loader>("root");
+  const cookie = useRouteLoaderData<TLoader>("root");
   const location = useLocation();
 
-  const cookie = data?.cookie;
+  console.log(cookie);
 
   return (
     <html lang="en">
