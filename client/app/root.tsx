@@ -41,17 +41,16 @@ export const links: LinksFunction = () => [
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const rawCookie = request.headers.get("Cookie");
-
-  if (!rawCookie) {
-    return null;
-  }
-
   const url = new URL(request.url);
 
   const isPrivateRoute = PRIVATE_ROUTE.some((route) => route.href.test(url.pathname));
 
   if (isPrivateRoute && !rawCookie) {
     return redirect("/login");
+  }
+
+  if (!rawCookie) {
+    return null;
   }
 
   const cookie = await roleAuthorization.parse(rawCookie);
@@ -75,7 +74,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {!/^\/register\/.*$/.test(location.pathname) && location.pathname !== "/login" && <Nav cookie={cookie} />}
+        {cookie && !/^\/register\/.*$/.test(location.pathname) && location.pathname !== "/login" ? (
+          <Nav cookie={cookie} />
+        ) : (
+          <Nav />
+        )}
         {children}
         <ContactBox />
         <ScrollRestoration />
@@ -88,22 +91,15 @@ export function ErrorBoundary() {
   const error = useRouteError();
 
   return (
-    <html lang="en">
-      <head>
-        <title>Oops!</title>
-        <Meta />
-        <Links />
-      </head>
-      <body>
-        <h1>
-          {isRouteErrorResponse(error)
-            ? `${error.status} ${error.statusText}`
-            : error instanceof Error
-            ? error.message
-            : "Unknown Error"}
-        </h1>
-      </body>
-    </html>
+    <div className="base">
+      <h1 className="heading-1">
+        {isRouteErrorResponse(error)
+          ? `${error.status} ${error.statusText}`
+          : error instanceof Error
+          ? error.message
+          : "Unknown Error"}
+      </h1>
+    </div>
   );
 }
 
