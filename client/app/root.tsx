@@ -66,8 +66,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const cookie = useRouteLoaderData<TLoader>("root");
   const location = useLocation();
 
-  console.log(cookie);
-
   return (
     <html lang="en">
       <head>
@@ -77,10 +75,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {cookie && !/^\/register\/.*$/.test(location.pathname) && location.pathname !== "/login" ? (
+        {cookie && Object.keys(cookie).length !== 0 ? (
           <Nav cookie={cookie} />
         ) : (
-          <Nav />
+          !/^\/register\/.*$/.test(location.pathname) && location.pathname !== "/login" && <Nav />
         )}
         {children}
         <ContactBox />
