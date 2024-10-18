@@ -79,7 +79,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         {/* {!/^\/register\/.*$/.test(location.pathname) && location.pathname !== "/login" && <Nav cookie={cookie} />} */}
         {children}
-        {/* <ContactBox /> */}
+        <ContactBox />
         <ScrollRestoration />
         <Scripts />
       </body>
