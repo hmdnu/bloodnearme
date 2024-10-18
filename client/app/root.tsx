@@ -20,6 +20,11 @@ import { PRIVATE_ROUTE } from "./constant/common";
 
 export const links: LinksFunction = () => [
   {
+    rel: "icon",
+    href: "/hospital.jpg",
+    type: "image/jpg",
+  },
+  {
     rel: "preconnect",
     href: "https://fonts.googleapis.com",
   },
