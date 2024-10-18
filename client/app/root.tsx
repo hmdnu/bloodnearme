@@ -45,7 +45,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
   const isPrivateRoute = PRIVATE_ROUTE.some((route) => route.href.test(url.pathname));
 
-  if (isPrivateRoute && !rawCookie) {
+  if (isPrivateRoute) {
     return redirect("/login");
   }
 
