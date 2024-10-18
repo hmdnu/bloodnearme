@@ -42,7 +42,6 @@ export const links: LinksFunction = () => [
 export async function loader({ request }: LoaderFunctionArgs) {
   const rawCookie = request.headers.get("Cookie");
   const url = new URL(request.url);
-
   const isPrivateRoute = PRIVATE_ROUTE.some((route) => route.href.test(url.pathname));
 
   if (isPrivateRoute && !rawCookie) {
@@ -80,7 +79,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         {!/^\/register\/.*$/.test(location.pathname) && location.pathname !== "/login" && <Nav cookie={cookie} />}
         {children}
-        <ContactBox />
+        {/* <ContactBox /> */}
         <ScrollRestoration />
         <Scripts />
       </body>
