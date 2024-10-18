@@ -53,10 +53,19 @@ export async function loader({ request }: LoaderFunctionArgs) {
     return null;
   }
 
-  const cookie = await roleAuthorization.parse(rawCookie);
-  const { userId, role } = serializeCookie(cookie);
+  try {
+    const cookie = await roleAuthorization.parse(rawCookie);
+    const { userId, role } = serializeCookie(cookie);
 
-  return json({ cookie: { userId, role } });
+    if (!userId || !role) {
+      throw new Error("Invalid cookie data");
+    }
+
+    return json({ cookie: { userId, role } });
+  } catch (error) {
+    console.error("Cookie parsing error:", error);
+    return redirect("/login");
+  }
 }
 
 export function Layout({ children }: { children: React.ReactNode }) {
