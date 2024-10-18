@@ -63,10 +63,10 @@ export async function loader({ request }: LoaderFunctionArgs) {
 }
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const data = useRouteLoaderData<typeof loader>("root");
-  const location = useLocation();
+  // const data = useRouteLoaderData<typeof loader>("root");
+  // const location = useLocation();
 
-  const cookie = data?.cookie;
+  // const cookie = data?.cookie;
 
   return (
     <html lang="en">
