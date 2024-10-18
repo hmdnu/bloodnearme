@@ -39,34 +39,34 @@ export const links: LinksFunction = () => [
   },
 ];
 
-// export async function loader({ request }: LoaderFunctionArgs) {
-// const rawCookie = request.headers.get("Cookie");
-// const url = new URL(request.url);
-// const isPrivateRoute = PRIVATE_ROUTE.some((route) => route.href.test(url.pathname));
+export async function loader({ request }: LoaderFunctionArgs) {
+  const rawCookie = request.headers.get("Cookie");
+  const url = new URL(request.url);
+  const isPrivateRoute = PRIVATE_ROUTE.some((route) => route.href.test(url.pathname));
 
-// if (isPrivateRoute && !rawCookie) {
-//   return redirect("/login");
-// }
+  if (isPrivateRoute && !rawCookie) {
+    return redirect("/login");
+  }
 
-// if (rawCookie) {
-//   const cookie = await roleAuthorization.parse(rawCookie);
-//   const { userId, role } = serializeCookie(cookie);
+  if (rawCookie) {
+    const cookie = await roleAuthorization.parse(rawCookie);
+    const { userId, role } = serializeCookie(cookie);
 
-//   if (!userId || !role) {
-//     return redirect("/login");
-//   }
+    if (!userId || !role) {
+      return redirect("/login");
+    }
 
-//   return json({ cookie: { userId, role } });
-// }
+    return json({ cookie: { userId, role } });
+  }
 
-// return null;
-// }
+  return null;
+}
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  // const data = useRouteLoaderData<typeof loader>("root");
-  // const location = useLocation();
+  const data = useRouteLoaderData<typeof loader>("root");
+  const location = useLocation();
 
-  // const cookie = data?.cookie;
+  const cookie = data?.cookie;
 
   return (
     <html lang="en">
