@@ -41,6 +41,11 @@ export const links: LinksFunction = () => [
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const rawCookie = request.headers.get("Cookie");
+
+  if (!rawCookie) {
+    return null;
+  }
+
   const url = new URL(request.url);
 
   const isPrivateRoute = PRIVATE_ROUTE.some((route) => route.href.test(url.pathname));
